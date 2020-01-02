@@ -1,0 +1,43 @@
+<div class="container box-shadow ">
+   <section>
+      <div class="container">
+         <div class="row py-100">
+            <div class="col-lg-12">
+               <div class="section-heading left">
+                  <h4>Add Blog</h4>
+               </div>
+               <div class="contact-form-box margin-30px-top"> 
+                             
+                    <div class="no-margin-lr" [hidden]="!submitted"></div>
+                    <form (ngSubmit)="onSubmit()" #blogForm="ngForm" class="contact-form">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <input type="text" class="medium-input" maxlength="50" placeholder="Title *" required="required" id="blogtitle" [(ngModel)]="blogModel.blogTitle" name="blogTitle" #blogTitle="ngModel" />
+                            <div [hidden]="blogTitle.valid || blogTitle.pristine" class="alert alert-danger">
+                              Blog Title is required
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                           <textarea class="medium-textarea" rows="12" maxlength="1000" placeholder="Content *" required="required" id="blogcontent" [(ngModel)]="blogModel.blogContent" name="blogContent"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <select class="form-control" id="blogAuthor" [(ngModel)]="blogModel.blogAuthor" name="blogAuthor" required>
+                              <option *ngFor="let author of authors" [value]="author">{{author}}</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                           <input type="date" class="medium-input" placeholder="Publish Date" required="required" id="blogdate" [(ngModel)]="blogModel.blogDate" name="blogDate" />
+                        </div>                        
+                        <div class="col-md-12 sm-margin-30px-bottom">
+                           <div class="top-contact text-left ">
+                              <button type="submit" class="button_submit" [disabled]="!blogForm.form.valid">Submit</button>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>            
+         </div>
+      </div>
+   </section>
+</div>
